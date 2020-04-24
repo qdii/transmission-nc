@@ -1,0 +1,15 @@
+{
+    "name": "Transmission",
+    "description": "Integrate the torrent manager Transmission within Nextcloud",
+    "type": "project",
+    "license": "AGPL",
+    "authors": [
+        {
+            "name": "Victor Lavaud"
+        }
+    ],
+    "require": {},
+    "require-dev": {
+        "phpunit/phpunit": "^5.4"
+    }
+}
