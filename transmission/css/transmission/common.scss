@@ -208,7 +208,6 @@ $nextcloud-bar-height: 50px;
 
 #statusbar
 {
-	height: $statusbar-height;
 	width: 100%;
 	border-bottom: 1px solid #AAA;
 	overflow: hidden;
@@ -268,8 +267,6 @@ $nextcloud-bar-height: 50px;
 $torrent-container-top: $nextcloud-bar-height + $toolbar-height + $statusbar-height + 6px;
 
 div#torrent_container {
-	position: fixed;
-	top: $torrent-container-top;
 	bottom: 22px;
 	right: 0px;
 	left: 0px;
