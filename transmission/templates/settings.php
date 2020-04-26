@@ -4,12 +4,12 @@
         <p>
             Transmission server to connect to:
         </p>
-        <form id="transmission-server">
+        <form id="transmission-server" action="/index.php/apps/transmission/save" method="post">
             <p>
                 <label for="transmission-server-ip-label">IP address</label>
-                <input type="text" name="" id="transmission-server-ip" placeholder="127.0.0.1" value="">
+                <input type="text" name="" id="transmission-server-ip" placeholder="127.0.0.1" value="<?php $parameters['host']?>">
                 <label for="transmission-server-port">Port</label>
-                <input type="text" name="" id="transmission-server-port" placeholder="9091" value="">
+                <input type="text" name="" id="transmission-server-port" placeholder="9091" value="<?php $parameters['port']?>">
                 <input type="submit" name="transmission-server-save" id="transmission-server-save-input" value="Save">
             </p>
         </form>
