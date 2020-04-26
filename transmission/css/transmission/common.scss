@@ -73,23 +73,6 @@ $selected-gradient-bottom: white;
  *
  *--------------------------------------*/
 
-html {
-	margin: 0;
-	padding: 0;
-	height: 100%;
-}
-
-body {
-	font: 62.5% "lucida grande", Tahoma, Verdana, Arial, Helvetica, sans-serif; /* Resets 1em to 10px */
-	color: #222;/* !important; */
-	background: #FFF;
-	text-align: center;
-	margin: 0 0 30px;
-	overflow: hidden;
-	img { border: none; }
-	a { outline: 0; }
-}
-
 /***
 ****
 ****  ABOUT DIALOG
@@ -130,6 +113,15 @@ body {
 	}
 }
 
+/***
+****
+****  CONTENT
+****
+***/
+div#content
+{
+     flex-direction: column;
+}
 
 /***
 ****
@@ -212,6 +204,7 @@ div#toolbar
 $statusbar-gradient-top: #ddd;
 $statusbar-gradient-bottom: #bbb;
 $statusbar-height: 26px;
+$nextcloud-bar-height: 50px;
 
 #statusbar
 {
@@ -272,7 +265,7 @@ $statusbar-height: 26px;
 ****
 ***/
 
-$torrent-container-top: $toolbar-height + $statusbar-height + 6px;
+$torrent-container-top: $nextcloud-bar-height + $toolbar-height + $statusbar-height + 6px;
 
 div#torrent_container {
 	position: fixed;
