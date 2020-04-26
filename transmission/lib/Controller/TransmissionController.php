@@ -20,8 +20,8 @@ class TransmissionController extends Controller {
     }
 
     public function rpc($method, $arguments) {
-        $host = $this->trns->getUserValue('host', $userId);
-        $port = $this->trns->getUserValue('port', $userId);
+        $host = $this->trns->getUserValue($this->appName, $this->userId, 'host');
+        $port = $this->trns->getUserValue($this->appName, $this->userId, 'port');
         $url = 'http://' . $host . ':' . $port . '/transmission/rpc';
         $headers_to_forward = [
             'X-Transmission-Session-Id'
