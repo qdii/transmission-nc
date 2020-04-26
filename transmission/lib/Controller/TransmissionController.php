@@ -21,7 +21,14 @@ class TransmissionController extends Controller {
 
     public function rpc($method, $arguments) {
         $host = $this->config->getUserValue($this->appName, $this->userId, 'host');
+        if (empty($host)) {
+            $host = "127.0.0.1";
+        }
+
         $port = $this->config->getUserValue($this->appName, $this->userId, 'port');
+        if (empty($port)) {
+            $port = "9091";
+        }
         $url = 'http://' . $host . ':' . $port . '/transmission/rpc';
         $headers_to_forward = [
             'X-Transmission-Session-Id'
