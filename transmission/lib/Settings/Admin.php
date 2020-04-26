@@ -1,5 +1,7 @@
 <?php
 
+namespace OCA\Transmission\Settings;
+
 use OCP\IL10N;
 use OCP\Settings\ISettings;
 
