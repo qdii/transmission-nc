@@ -13,6 +13,13 @@ class Application extends App {
         $container = $this->getContainer();
 
         /**
+         * Config
+         */
+        $container->registerService('Config', function($c) {
+            return $c->query('ServerContainer')->getConfig();
+        });
+
+        /**
          * Controllers
          */
         $container->registerService('TransmissionController', function($c) {
@@ -30,13 +37,6 @@ class Application extends App {
                 $c->query('UserId'),
                 $c->query('Config')
             );
-        });
-
-        /**
-         * Config
-         */
-        $container->registerService('Config', function($c) {
-            return $c->query('ServerContainer')->getConfig();
         });
     }
 }
