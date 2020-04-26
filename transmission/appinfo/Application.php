@@ -4,6 +4,7 @@ namespace OCA\Transmission\AppInfo;
 use \OCP\AppFramework\App;
 use \OCA\Transmission\Controller\TransmissionController;
 use \OCA\Transmission\Controller\PageController;
+use \OCA\Transmission\Settings\Admin;
 
 class Application extends App {
 
@@ -34,6 +35,14 @@ class Application extends App {
             return new PageController(
                 $c->query('AppName'),
                 $c->query('Request'),
+                $c->query('UserId'),
+                $c->query('Config')
+            );
+        });
+
+        $container->registerService('Admin', function($c) {
+            return new Admin(
+                $c->query('AppName'),
                 $c->query('UserId'),
                 $c->query('Config')
             );
