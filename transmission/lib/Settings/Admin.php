@@ -2,6 +2,7 @@
 
 namespace OCA\Transmission\Settings;
 
+use OCP\AppFramework\Http\TemplateResponse;
 use OCP\IL10N;
 use OCP\Settings\ISettings;
 
