@@ -10,14 +10,13 @@ use OCP\AppFramework\Controller;
 use OCP\AppFramework\Http;
 
 class TransmissionController extends Controller {
-    private $trns;
-    private $url;
+    private $config;
     private $userId;
 
-    public function __construct($AppName, IRequest $request, $userId, IConfig $trns){
+    public function __construct($AppName, IRequest $request, $UserId, IConfig $Config){
         parent::__construct($AppName, $request);
-        $this->userId = $userId;
-        $this->trns = $trns;
+        $this->userId = $UserId;
+        $this->config = $Config;
     }
 
     public function rpc($method, $arguments) {
