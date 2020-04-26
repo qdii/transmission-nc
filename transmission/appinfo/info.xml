@@ -21,4 +21,7 @@
             <route>transmission.page.index</route>
         </navigation>
     </navigations>
+    <settings>
+		<admin>OCA\Transmission\Settings\Admin</admin>
+    </settings>
 </info>
