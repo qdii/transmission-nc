@@ -28,7 +28,8 @@ class Application extends App {
                 $c->query('AppName'),
                 $c->query('Request'),
                 $c->query('UserId'),
-                $c->query('Config')
+                $c->query('Config'),
+                $c->query('Logger')
             );
         });
         $container->registerService('PageController', function($c) {
@@ -40,13 +41,8 @@ class Application extends App {
             );
         });
 
-        $container->registerService('Admin', function($c) {
-            return new Admin(
-                $c->query('AppName'),
-                $c->query('UserId'),
-                $c->query('Config')
-            );
-        });
+    }
+    public function registerHooks() {
     }
 }
 ?>
