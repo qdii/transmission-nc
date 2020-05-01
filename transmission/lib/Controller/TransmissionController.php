@@ -1,6 +1,7 @@
 <?php
 namespace OCA\Transmission\Controller;
 
+use OCP\IConfig;
 use OCP\IRequest;
 use OCP\AppFramework\Http\TemplateResponse;
 use OCP\AppFramework\Http\DataResponse;
@@ -9,19 +10,31 @@ use OCP\AppFramework\Controller;
 use OCP\AppFramework\Http;
 
 class TransmissionController extends Controller {
+    private $config;
     private $userId;
 
-    public function __construct($AppName, IRequest $request, $UserId){
+    public function __construct($AppName, IRequest $request, $UserId, IConfig $Config){
         parent::__construct($AppName, $request);
         $this->userId = $UserId;
+        $this->config = $Config;
     }
 
     public function rpc($method, $arguments) {
+        $host = $this->config->getUserValue($this->appName, $this->userId, 'host');
+        if (empty($host)) {
+            $host = "127.0.0.1";
+        }
+
+        $port = $this->config->getUserValue($this->appName, $this->userId, 'port');
+        if (empty($port)) {
+            $port = "9091";
+        }
+        $url = 'http://' . $host . ':' . $port . '/transmission/rpc';
         $headers_to_forward = [
             'X-Transmission-Session-Id'
         ];
         $ch = curl_init();
-        curl_setopt($ch, CURLOPT_URL, 'http://localhost:9091/transmission/rpc');
+        curl_setopt($ch, CURLOPT_URL, $url);
         curl_setopt($ch, CURLOPT_HEADER, 1);
         curl_setopt($ch, CURLOPT_HTTPHEADER, array('Accept: application/json'));
         curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type: application/json'));
