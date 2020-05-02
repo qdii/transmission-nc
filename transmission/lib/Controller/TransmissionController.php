@@ -22,7 +22,7 @@ class TransmissionController extends Controller {
     public function rpc($method, $arguments) {
         $host = $this->config->getUserValue($this->appName, $this->userId, 'host');
         if (empty($host)) {
-            $host = "127.0.0.1";
+            $host = "transmission";
         }
 
         $port = $this->config->getUserValue($this->appName, $this->userId, 'port');
