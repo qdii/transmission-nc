@@ -4,7 +4,6 @@ namespace OCA\Transmission\AppInfo;
 use \OCP\AppFramework\App;
 use \OCA\Transmission\Controller\TransmissionController;
 use \OCA\Transmission\Controller\PageController;
-use \OCA\Transmission\Settings\Admin;
 
 class Application extends App {
 

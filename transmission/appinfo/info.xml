@@ -22,7 +22,4 @@
             <icon>transmission.svg</icon>
         </navigation>
     </navigations>
-    <settings>
-		<admin>OCA\Transmission\Settings\Admin</admin>
-    </settings>
 </info>
