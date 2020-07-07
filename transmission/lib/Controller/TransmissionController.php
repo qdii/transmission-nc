@@ -51,7 +51,7 @@ class TransmissionController extends Controller {
 
         // Forward X-Transmission-Session-Id
         foreach (getallheaders() as $header => $value) {
-            if (strcmp($header, 'X-Transmission-Session-Id')) {
+            if (strcmp($header, 'X-Transmission-Session-Id') == 0) {
                 curl_setopt($ch, CURLOPT_HTTPHEADER, array('X-Transmission-Session-Id: ' . $value));
             }
         }
