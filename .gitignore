@@ -1,0 +1,9 @@
+transmission-*.tar.gz
+transmission/Makefile
+transmission/README.md
+transmission/build/
+transmission/composer.json
+transmission/composer.lock
+transmission/phpunit.integration.xml
+transmission/phpunit.xml
+transmission/vendor/
