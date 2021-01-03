@@ -11,11 +11,9 @@ use OCP\AppFramework\Http;
 
 class TransmissionController extends Controller {
     private $config;
-    private $userId;
 
-    public function __construct($AppName, IRequest $request, $UserId, IConfig $Config){
+    public function __construct($AppName, IRequest $request, IConfig $Config){
         parent::__construct($AppName, $request);
-        $this->userId = $UserId;
         $this->config = $Config;
     }
 

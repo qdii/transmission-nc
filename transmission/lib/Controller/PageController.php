@@ -8,12 +8,10 @@ use OCP\AppFramework\Http\DataResponse;
 use OCP\AppFramework\Controller;
 
 class PageController extends Controller {
-    private $userId;
     private $config;
 
-    public function __construct($AppName, IRequest $request, $UserId, IConfig $Config){
+    public function __construct($AppName, IRequest $request, IConfig $Config){
         parent::__construct($AppName, $request);
-        $this->userId = $UserId;
         $this->config = $Config;
     }
 
