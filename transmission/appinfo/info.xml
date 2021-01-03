@@ -5,7 +5,7 @@
     <name>Transmission</name>
     <summary>Integrate the torrent manager Transmission within Nextcloud</summary>
     <description><![CDATA[Check the status of the torrents of a Transmission server directly through this Nextcloud app.]]></description>
-    <version>0.6.0</version>
+    <version>0.6.1</version>
     <licence>agpl</licence>
     <author mail="victor.lavaud@pm.me" >Victor Lavaud</author>
     <namespace>Transmission</namespace>
@@ -13,7 +13,7 @@
     <category>tools</category>
     <bugs>https://github.com/qdii/transmission-nc/issues</bugs>
     <dependencies>
-        <nextcloud min-version="15" max-version="19"/>
+        <nextcloud min-version="15" max-version="20"/>
     </dependencies>
     <navigations>
         <navigation>
