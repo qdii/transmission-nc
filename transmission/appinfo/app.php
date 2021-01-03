@@ -1,5 +1,5 @@
 <?php
 
-$app = new \OCA\Transmission\AppInfo\Application();
+$app = \OC::$server->query(\OCA\Transmission\AppInfo\Application::class);
 $app->registerHooks();
 
