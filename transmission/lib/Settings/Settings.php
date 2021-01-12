@@ -2,22 +2,30 @@
 namespace OCA\Transmission\Settings;
 
 use OCP\AppFramework\Http\TemplateResponse;
+use OCP\IConfig;
 use OCP\Settings\ISettings;
 
 class Settings implements ISettings {
 
-        public function __construct() {
-        }
+	private $config;
 
-        public function getForm() {
-            return new TemplateResponse('transmission', 'settings');
-        }
+    public function __construct(IConfig $config) {
+		$this->config = $config;
+    }
 
-        public function getSection() {
-            return 'sharing';
-        }
+    public function getForm() {
+        $response = new TemplateResponse('transmission', 'settings');
+        $response->setParams([
+			'rpc-port' => $this->config->getAppValue('transmission', 'rpc-port', '9091'),
+		]);
+        return $response;
+    }
 
-        public function getPriority() {
-            return 50;
-        }
+    public function getSection() {
+        return 'sharing';
+    }
+
+    public function getPriority() {
+        return 50;
+    }
 }
