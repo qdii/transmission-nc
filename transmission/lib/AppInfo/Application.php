@@ -16,7 +16,7 @@ class Application extends App {
          * Config
          */
         $container->registerService('Config', function($c) {
-            return $c->query('ServerContainer')->getConfig();
+            return $c->query(\OCP\IServerContainer::class)->getConfig();
         });
 
         /**
@@ -24,19 +24,18 @@ class Application extends App {
          */
         $container->registerService('TransmissionController', function($c) {
             return new TransmissionController(
-                $c->query('AppName'),
-                $c->query('Request'),
-                $c->query('UserId'),
-                $c->query('Config'),
-                $c->query('Logger')
+                'transmission',
+                $c->query(\OCP\IRequest::class),
+                $c->query(\OCP\IConfig::class),
+                $c->query(\OCP\ILogger::class)
             );
         });
         $container->registerService('PageController', function($c) {
             return new PageController(
-                $c->query('AppName'),
-                $c->query('Request'),
-                $c->query('UserId'),
-                $c->query('Config')
+                'transmission',
+                $c->query(\OCP\IRequest::class),
+                $c->query(\OCP\IConfig::class),
+                $c->query(\OCP\ILogger::class)
             );
         });
 

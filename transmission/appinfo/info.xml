@@ -5,7 +5,7 @@
     <name>Transmission</name>
     <summary>Integrate the torrent manager Transmission within Nextcloud</summary>
     <description><![CDATA[Check the status of the torrents of a Transmission server directly through this Nextcloud app.]]></description>
-    <version>0.6.1</version>
+    <version>0.6.5</version>
     <licence>agpl</licence>
     <author mail="victor.lavaud@pm.me" >Victor Lavaud</author>
     <namespace>Transmission</namespace>
@@ -22,4 +22,7 @@
             <icon>transmission.svg</icon>
         </navigation>
     </navigations>
+    <settings>
+        <admin>OCA\Transmission\Settings\Settings</admin>
+    </settings>
 </info>
