@@ -12,6 +12,10 @@ use OCP\AppFramework\Http;
 class TransmissionController extends Controller {
     private $config;
 
+    private function getRPCPort() {
+        return $this->config->getAppValue('transmission', 'rpc-port', '9091');
+    }
+
     public function __construct($AppName, IRequest $request, IConfig $Config){
         parent::__construct($AppName, $request);
         $this->config = $Config;
@@ -25,7 +29,7 @@ class TransmissionController extends Controller {
 
         $port = $this->config->getUserValue($this->appName, $this->userId, 'port');
         if (empty($port)) {
-            $port = "9091";
+            $port = $this->getRPCPort();
         }
         $url = 'http://' . $host . ':' . $port . '/transmission/rpc';
         $headers_to_forward = [
