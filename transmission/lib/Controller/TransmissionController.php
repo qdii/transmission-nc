@@ -58,6 +58,14 @@ class TransmissionController extends Controller {
             }
         }
 
+        // Enable Basic Authentication, if username or password is set.
+        $username = $this->config->getAppValue('transmission', 'rpc-username', '');
+        $password = $this->config->getAppValue('transmission', 'rpc-password', '');
+        if (!empty($username) || !empty($password)) {
+            $creds = base64_encode($username . ':' . $password);
+            curl_setopt($ch, CURLOPT_HTTPHEADER, array('Authorization: Basic ' . $creds));
+        }
+
         $response = curl_exec($ch);
         $code = curl_getinfo($ch,  CURLINFO_HTTP_CODE);
         $header_size = curl_getinfo($ch, CURLINFO_HEADER_SIZE);
