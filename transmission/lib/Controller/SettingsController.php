@@ -21,6 +21,13 @@ class SettingsController extends Controller {
             return new DataResponse("Invalid port number.", 422);
         }
         $this->config->setAppValue('transmission', 'rpc-port', $port);
+
+        $username = $this->request->getParam("username");
+        $this->config->setAppValue('transmission', 'rpc-username', $username);
+
+        $password = $this->request->getParam("password");
+        $this->config->setAppValue('transmission', 'rpc-password', $password);
+
         return new DataResponse('success');
     }
 
