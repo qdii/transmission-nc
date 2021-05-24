@@ -46,10 +46,12 @@ class TransmissionController extends Controller {
             'arguments' => $arguments,
         ];
 
+        $sent_headers = [];
+
         // Forward X-Transmission-Session-Id
         foreach (getallheaders() as $header => $value) {
             if (strcmp($header, 'X-Transmission-Session-Id') == 0) {
-                curl_setopt($ch, CURLOPT_HTTPHEADER, array('X-Transmission-Session-Id: ' . $value));
+                array_push($sent_headers, 'X-Transmission-Session-Id: ' . $value);
             }
         }
 
@@ -58,8 +60,10 @@ class TransmissionController extends Controller {
         $password = $this->config->getAppValue('transmission', 'rpc-password', '');
         if (!empty($username) || !empty($password)) {
             $creds = base64_encode($username . ':' . $password);
-            curl_setopt($ch, CURLOPT_HTTPHEADER, array('Authorization: Basic ' . $creds));
+            array_push($sent_headers, 'Authorization: Basic ' . $creds);
         }
+
+        curl_setopt($ch, CURLOPT_HTTPHEADER, $sent_headers);
 
         $response = curl_exec($ch);
         $code = curl_getinfo($ch,  CURLINFO_HTTP_CODE);
