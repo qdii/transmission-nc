@@ -2,6 +2,7 @@
 namespace OCA\Transmission\Controller;
 
 use OCP\IConfig;
+use OCP\ILogger;
 use OCP\IRequest;
 use OCP\AppFramework\Http\TemplateResponse;
 use OCP\AppFramework\Http\DataResponse;
@@ -11,26 +12,21 @@ use OCP\AppFramework\Http;
 
 class TransmissionController extends Controller {
     private $config;
+    private $logger;
 
     private function getRPCPort() {
-        return $this->config->getAppValue('transmission', 'rpc-port', '9091');
+        return $this->config->getAppValue($this->appName, 'rpc-port', '9091');
     }
 
-    public function __construct($AppName, IRequest $request, IConfig $Config){
+    public function __construct($AppName, IRequest $request, IConfig $Config, ILogger $logger){
         parent::__construct($AppName, $request);
         $this->config = $Config;
+        $this->logger = $logger;
     }
 
     public function rpc($method, $arguments) {
-        $host = $this->config->getUserValue($this->appName, $this->userId, 'host');
-        if (empty($host)) {
-            $host = "transmission";
-        }
-
-        $port = $this->config->getUserValue($this->appName, $this->userId, 'port');
-        if (empty($port)) {
-            $port = $this->getRPCPort();
-        }
+        $host = "transmission";
+        $port = $this->getRPCPort();
         $url = 'http://' . $host . ':' . $port . '/transmission/rpc';
         $headers_to_forward = [
             'X-Transmission-Session-Id'
@@ -49,7 +45,6 @@ class TransmissionController extends Controller {
             'method' => $method,
             'arguments' => $arguments,
         ];
-        curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($data));
 
         // Forward X-Transmission-Session-Id
         foreach (getallheaders() as $header => $value) {

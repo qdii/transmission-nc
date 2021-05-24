@@ -39,7 +39,7 @@ class Application extends App {
                 $c->query(\OCP\ILogger::class)
             );
         });
-        $container->registerService('SettingsContreller', function($c) {
+        $container->registerService('SettingsController', function($c) {
             return new SettingsController(
                 'transmission',
                 $c->query(\OCP\IRequest::class),
