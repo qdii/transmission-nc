@@ -4,6 +4,7 @@ namespace OCA\Transmission\AppInfo;
 use \OCP\AppFramework\App;
 use \OCA\Transmission\Controller\TransmissionController;
 use \OCA\Transmission\Controller\PageController;
+use \OCA\Transmission\Controller\SettingsController;
 
 class Application extends App {
 
@@ -36,6 +37,13 @@ class Application extends App {
                 $c->query(\OCP\IRequest::class),
                 $c->query(\OCP\IConfig::class),
                 $c->query(\OCP\ILogger::class)
+            );
+        });
+        $container->registerService('SettingsContreller', function($c) {
+            return new SettingsController(
+                'transmission',
+                $c->query(\OCP\IRequest::class),
+                $c->query(\OCP\IConfig::class)
             );
         });
 
