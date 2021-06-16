@@ -45,6 +45,7 @@ class TransmissionController extends Controller {
             'method' => $method,
             'arguments' => $arguments,
         ];
+        curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($data));
 
         $sent_headers = [];
 
